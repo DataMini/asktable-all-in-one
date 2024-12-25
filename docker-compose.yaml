@@ -1,0 +1,31 @@
+services:
+  asktable:
+    # AskTable
+    image: registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one:latest  # 中国大陆地区
+    # image: datamini/asktable-all-in-one:latest   # 其他地区
+    container_name: asktable
+    depends_on:
+      - asktable_mysql
+    ports:
+      - 8000:80
+    environment:
+      BASE_URL: http://127.0.0.1:8000          # 容器对外暴露的地址（即从外部比如浏览器访问的地址）
+      MYSQL_HOST: asktable_mysql               # MySQL 数据库地址
+      MYSQL_USER: asktable                     # MySQL 数据库用户名
+      MYSQL_PASSWORD: asktable                 # MySQL 数据库密码
+      MYSQL_DB: asktable                       # MySQL 数据库名称
+      LLM_API_KEY: your_api_key_here      #LLM API KEY，用于访问大模型。
+  
+  asktable_mysql:
+    image: cr2.fit2cloud.com/library/mysql:8.0
+    container_name: asktable_mysql
+    ports:
+      - "3306:3306"
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: asktable
+      MYSQL_DATABASE: asktable
+      MYSQL_USER: asktable
+      MYSQL_PASSWORD: asktable
+    volumes:
+      - ./mysql_data:/var/lib/mysql
