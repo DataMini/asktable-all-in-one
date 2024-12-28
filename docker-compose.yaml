@@ -19,7 +19,8 @@ services:
       - ./asktable_data:/asktable
       
   asktable_mysql:
-    image: cr2.fit2cloud.com/library/mysql:8.0
+    image: cr2.fit2cloud.com/library/mysql:8.0   # 中国大陆地区
+    # image: mysql:8.0     # 其他地区
     container_name: asktable_mysql
     ports:
       - "3306:3306"
