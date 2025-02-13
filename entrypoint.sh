@@ -9,6 +9,8 @@ export AT_WEB_DEPLOYMENT_MODEL=local
 # for at-auth
 export AT_API_BASE_URL='http://127.0.0.1:8688/api/v1'
 export AT_SYS_API_KEY=asktable
+export AUTH_MAX_USERS=1
+
 # 合并到一个 Nginx Port，URL增加前缀
 export AUTH_HTTP_ROOT_PATH='/auth'
 export AT_AUTH_DEPLOYMENT_MODEL=local
