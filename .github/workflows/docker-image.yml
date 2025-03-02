@@ -30,10 +30,12 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} # 使用访问令牌进行身份验证
 
-    # Read version from version.txt file
-    - name: Get the version
+    # Read version from version.txt file and set date
+    - name: Get the version and date
       id: get_version
-      run: echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
+      run: |
+        echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
+        echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
 
     - name: Build, tag and push Docker image
       uses: docker/build-push-action@v5.0.0
@@ -42,7 +44,7 @@ jobs:
         file: Dockerfile # Dockerfile的位置
         push: true # 推送镜像到阿里云镜像仓库
         tags: |
-          registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one:${{ env.VERSION }}
+          registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one:${{ env.DATE }}
           registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one:latest
           datamini/asktable-all-in-one:latest
         platforms: linux/amd64 ,linux/arm64

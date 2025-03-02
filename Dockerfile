@@ -4,7 +4,7 @@ FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-web:latest AS web
 
 
 # 使用 asktable-server 作为基础镜像
-FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-server:latest
+FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-server-bin:latest
 
 
 # 安装 supervisord、nginx
