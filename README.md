@@ -1,9 +1,8 @@
 # AskTable
 
-AskTable 是 AI 时代的经营分析软件，致力于让每个人都能轻松、平等地从数据中获取洞察。
+AskTable AI 致力于让每个人都能轻松、平等地从数据中获取洞察。
 
-- [什么是 AskTable](https://docs.asktable.com/docs/introduction/what-is-asktable)
-
+- [AskTable 官网](https://asktable.com/)
 
 - [如何单机安装 AskTable](https://docs.asktable.com/docs/pricing-and-deployment/private-deployment-all-in-one)
 
@@ -13,7 +12,7 @@ AskTable 是 AI 时代的经营分析软件，致力于让每个人都能轻松�
 
 **1. 配置 AskTable**
 
-`LLM_API_KEY` 是访问AI 模型的 API_KEY， 建议[登录 AskTable](https://cloud.asktable.com) ，右上角点击【免费下载 AskTable】免费申请。其他配置项可使用默认值。
+`LLM_API_KEY` AI 模型令牌，是以“asktable-”开头的字符串。登录 [AskTable](https://cloud.asktable.com/?dialog=deployment) 获取。其他配置项可使用默认值。
 
 <div style="text-align: center;">
   <img src="https://github.com/user-attachments/assets/3233df9d-d03b-4f9d-b1b5-3649b0aed4ad" alt="Image" width="500">
