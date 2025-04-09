@@ -30,6 +30,9 @@ COPY supervisord.conf /etc/supervisor/supervisord.conf
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+COPY entrypoint_web.sh /entrypoint_web.sh
+RUN chmod +x /entrypoint_web.sh
+
 # 暴露端口
 EXPOSE 80
 

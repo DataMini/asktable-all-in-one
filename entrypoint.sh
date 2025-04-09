@@ -21,7 +21,5 @@ export AT_HTTP_ROOT_PATH='/api'
 export LANGFUSE_ENV_TAG=all-in-one
 export AT_HTTP_HOST_EXTERNAL=${BASE_URL}/api
 
-envsubst < /usr/share/nginx/html/env-config.js.template > /usr/share/nginx/html/env-config.js
-
 # 启动 Supervisor
 exec supervisord -c /etc/supervisor/supervisord.conf
