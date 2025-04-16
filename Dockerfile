@@ -17,7 +17,7 @@ COPY --from=web /etc/nginx/nginx.conf /etc/nginx/nginx.conf
 
 
 # auth 用 requirements.txt
-RUN pip install -r /at_auth/requirements.txt
+RUN poetry config virtualenvs.create false && poetry install --directory /at_auth --no-interaction --no-ansi --no-root --without dev
 
 # 复制代理配置
 COPY asktable-proxy.conf /etc/nginx/conf.d/asktable-proxy.conf
