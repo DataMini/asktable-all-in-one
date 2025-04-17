@@ -78,6 +78,6 @@ jobs:
           # 进入部署目录
           cd /root/sh1/at-enterprise-a/
           # 拉取最新镜像
-          docker-compose pull && docker-compose down
+          docker compose pull && docker compose down
           # 启动容器
-          docker-compose up -d
+          docker compose up -d
