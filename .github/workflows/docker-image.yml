@@ -52,7 +52,7 @@ jobs:
         cache-to: type=gha,mode=max # 启用缓存并优化构建
 
 
-    - name: Execute deployment script  # 只更新重启，不提供 docker-compose.yaml 文件
+    - name: Execute deployment script-sh4  # 只更新重启，不提供 docker-compose.yaml 文件
       uses: appleboy/ssh-action@v0.1.10
       with:
         host: ${{ secrets.SERVER_HOST_SH4 }}
@@ -62,6 +62,21 @@ jobs:
         script: |
           # 进入部署目录
           cd /root/sh4/at-all-in-one/
+          # 拉取最新镜像
+          docker-compose pull && docker-compose down
+          # 启动容器
+          docker-compose up -d
+
+    - name: Execute deployment script-sh1  # 只更新重启，不提供 docker-compose.yaml 文件
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: ${{ secrets.SERVER_HOST_SH1 }}
+        username: ${{ secrets.SERVER_USER }}
+        password: ${{ secrets.SERVER_PASSWORD }}
+        port: 22
+        script: |
+          # 进入部署目录
+          cd /root/sh1/at-enterprise-a/
           # 拉取最新镜像
           docker-compose pull && docker-compose down
           # 启动容器
