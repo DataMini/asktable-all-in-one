@@ -81,3 +81,18 @@ jobs:
           docker compose pull && docker compose down
           # 启动容器
           docker compose up -d
+
+    - name: Save and push Docker image to Aliyun OSS
+      run: |
+        # 将镜像保存为 tar 文件
+        docker save registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one -o asktable-all-in-one.tar
+        # 安装 ossutil
+        curl -o ossutil64 https://gosspublic.alicdn.com/ossutil/1.7.8/ossutil64
+        chmod 755 ossutil64
+        # 配置 ossutil 并上传 tar 文件到 OSS
+        ./ossutil64 config -e ${{ secrets.OSS_ENDPOINT }} -i ${{ secrets.OSS_ACCESS_KEY_ID }} -k ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+        ./ossutil64 cp asktable-all-in-one.tar oss://${{ secrets.OSS_BUCKET }}/docker-images/asktable-all-in-one.tar -f
+        echo "Docker 镜像已保存并上传到 OSS: oss://${{ secrets.OSS_BUCKET }}/docker-images/asktable-all-in-one.tar"
+        # 清理临时文件
+        rm -f asktable-all-in-one.tar
+        rm -f ossutil64
