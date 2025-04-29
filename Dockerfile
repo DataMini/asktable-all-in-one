@@ -1,5 +1,5 @@
 # 使用已有的三种镜像作为构建阶段源
-FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-auth-obfuscated:latest AS auth
+FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-auth:latest AS auth
 FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-web:latest AS web
 
 
