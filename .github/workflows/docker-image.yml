@@ -34,7 +34,6 @@ jobs:
     - name: Get the version and date
       id: get_version
       run: |
-        echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
         echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
 
     - name: Build, tag and push Docker image

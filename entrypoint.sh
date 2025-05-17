@@ -21,5 +21,18 @@ export AT_HTTP_ROOT_PATH='/api'
 export LANGFUSE_ENV_TAG=all-in-one
 export AT_HTTP_HOST_EXTERNAL=${BASE_URL}/api
 
+# 设置AT-Web参数
+envsubst < /usr/share/nginx/html/env-config.js.template > /usr/share/nginx/html/env-config.js
+
+# 如果设置了 AT_WEB_TITLE，则修改index.html文件中的标题
+if [ ! -z "$AT_WEB_TITLE" ]; then
+  sed -i "s|<title>.*</title>|<title>$AT_WEB_TITLE</title>|g" /usr/share/nginx/html/index.html  
+fi
+
+# 如果设置了 AT_WEB_DESCRIPTION，则修改index.html文件中的描述
+if [ ! -z "$AT_WEB_DESCRIPTION" ]; then
+  sed -i "s|<meta[[:space:]]*name=\"description\"[[:space:]]*content=\".*\"/>|<meta name=\"description\" content=\"$AT_WEB_DESCRIPTION\"/>|g" /usr/share/nginx/html/index.html
+fi
+
 # 启动 Supervisor
 exec supervisord -c /etc/supervisor/supervisord.conf
