@@ -35,6 +35,7 @@ jobs:
       id: get_version
       run: |
         echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+        echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
 
     - name: Build, tag and push Docker image
       uses: docker/build-push-action@v5.0.0
@@ -44,6 +45,7 @@ jobs:
         push: true # 推送镜像到阿里云镜像仓库
         tags: |
           registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one:${{ env.DATE }}
+          registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one:${{ env.VERSION }}
           registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one:latest
           datamini/asktable-all-in-one:latest
         platforms: linux/amd64 #,linux/arm64
