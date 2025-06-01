@@ -21,6 +21,11 @@ export AT_HTTP_ROOT_PATH='/api'
 export LANGFUSE_ENV_TAG=all-in-one
 export AT_HTTP_HOST_EXTERNAL=${BASE_URL}/api
 
+# 如果设置了 INIT_SAMPLE_DATA 为 true，则设置初始化标志
+if [ "$INIT_SAMPLE_DATA" = "true" ]; then
+  export INIT_SAMPLE_DATA_FLAG=true
+fi
+
 # 设置AT-Web参数
 envsubst < /usr/share/nginx/html/env-config.js.template > /usr/share/nginx/html/env-config.js
 

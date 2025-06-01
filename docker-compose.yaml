@@ -16,6 +16,7 @@ services:
       MYSQL_USER: asktable                     # MySQL 数据库用户名
       MYSQL_PASSWORD: asktable                 # MySQL 数据库密码
       MYSQL_DB: asktable                       # MySQL 数据库名称
+      INIT_SAMPLE_DATA: 1
     volumes:
       - ./asktable_data:/asktable
       
