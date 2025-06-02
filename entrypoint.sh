@@ -9,22 +9,21 @@ export AT_WEB_DEPLOYMENT_MODEL=local
 # for at-auth
 export AT_API_BASE_URL='http://127.0.0.1:8688/api/v1'
 export AT_SYS_API_KEY=asktable
+export AUTH_SYS_ADMIN_KEY=asktable
 export AUTH_MAX_USERS=1
-
-# 合并到一个 Nginx Port，URL增加前缀
-export AUTH_HTTP_ROOT_PATH='/auth'
 export AT_AUTH_DEPLOYMENT_MODEL=local
+export AUTH_HTTP_ROOT_PATH='/auth'  # 合并到一个 Nginx Port，URL增加前缀
 
 # for at-server
-# 合并到一个 Nginx Port，URL增加前缀
-export AT_HTTP_ROOT_PATH='/api'
+export AT_HTTP_ROOT_PATH='/api'  # 合并到一个 Nginx Port，URL增加前缀
 export LANGFUSE_ENV_TAG=all-in-one
 export AT_HTTP_HOST_EXTERNAL=${BASE_URL}/api
 
-# 如果设置了 INIT_SAMPLE_DATA 为 true，则设置初始化标志
-if [ "$INIT_SAMPLE_DATA" = "true" ]; then
-  export INIT_SAMPLE_DATA_FLAG=true
-fi
+
+# for all-in-one init sample data
+export INIT_SAMPLE_DATA=1
+export AUTH_API_BASE_URL='http://127.0.0.1:8689/auth'
+
 
 # 设置AT-Web参数
 envsubst < /usr/share/nginx/html/env-config.js.template > /usr/share/nginx/html/env-config.js

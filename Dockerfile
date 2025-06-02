@@ -8,7 +8,7 @@ FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-server-bin:latest
 
 
 # 安装 supervisord、nginx
-RUN apt-get update && apt-get install -y supervisor nginx telnet gettext-base mysql-client curl
+RUN apt-get update && apt-get install -y supervisor nginx telnet gettext-base default-mysql-client curl
 
 # 复制各服务文件到主镜像
 COPY --from=auth /at_auth /at_auth

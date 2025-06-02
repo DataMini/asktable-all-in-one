@@ -1,7 +1,7 @@
 {
   "project_info": {
     "id": "p_6kiV7BvHA6uUJepLs0LOsC",
-    "name": "预演项目_正式"
+    "name": "示例项目"
   },
   "preferences": [
     {
@@ -417,8 +417,8 @@
       "id": "temp_field_8",
       "name": "category_name",
       "full_name": "${SAMPLE_DB_NAME}.tb_category.category_name",
-      "origin_desc": "分类名称（如 "电子产品""电脑配件"），用于筛选商品",
-      "curr_desc": "分类名称（如 "电子产品""电脑配件"），用于筛选商品",
+      "origin_desc": "分类名称（如 电子产品，电脑配件），用于筛选商品",
+      "curr_desc": "分类名称（如 电子产品，电脑配件），用于筛选商品",
       "curr_desc_stat": "origin",
       "sample_data": null,
       "data_type": "STRING",

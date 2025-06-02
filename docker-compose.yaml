@@ -10,13 +10,14 @@ services:
       - 8000:80
     environment:
       TZ: Asia/Shanghai
-      BASE_URL: http://12.0.0.1:8000          # 容器对外暴露的地址（即从外部比如浏览器访问的地址）
+      BASE_URL: http://127.0.0.1:8000          # 容器对外暴露的地址（即从外部比如浏览器访问的地址）
       LLM_API_KEY: <YOUR_API_KEY_HERE>      #LLM API KEY，用于访问大模型。
       MYSQL_HOST: asktable_mysql               # MySQL 数据库地址
       MYSQL_USER: asktable                     # MySQL 数据库用户名
       MYSQL_PASSWORD: asktable                 # MySQL 数据库密码
       MYSQL_DB: asktable                       # MySQL 数据库名称
       INIT_SAMPLE_DATA: 1
+      MYSQL_ROOT_PASSWORD: asktable
     volumes:
       - ./asktable_data:/asktable
       
