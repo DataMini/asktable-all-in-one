@@ -1,0 +1,688 @@
+{
+  "project_info": {
+    "id": "p_6kiV7BvHA6uUJepLs0LOsC",
+    "name": "示例项目"
+  },
+  "preferences": [
+    {
+      "id": "temp_pf_0",
+      "project_id": "p_temp",
+      "general_preference": "1.如果涉及到订单查询并且没有表明准确时间的话，请只查询最近3个月的订单数据",
+      "sql_preference": null
+    }
+  ],
+  "chatbots": [
+    {
+      "id": "temp_bot_0",
+      "name": "购物数据库机器人",
+      "project_id": "p_temp",
+      "datasource_ids": [
+        "temp_ds_0"
+      ],
+      "extapi_ids": [],
+      "debug": 0,
+      "publish": 0,
+      "avatar_url": null,
+      "max_rows": 0,
+      "sample_questions": [
+        "查询柯武购买过的订单时间、商品名称、分类、价格、折扣",
+        "哪些订单价格高于平均订单价格",
+        "平均订单价格是多少"
+      ],
+      "magic_input": null,
+      "webhooks": [],
+      "welcome_message": "嗨👋你好！",
+      "color_theme": null,
+      "query_balance": null
+    }
+  ],
+  "glossary_entries": [
+    {
+      "id": "temp_entry_0",
+      "project_id": "p_temp",
+      "term": "工行",
+      "aliases": [
+        "工商银行"
+      ],
+      "payload": null,
+      "definition": "指工商银行",
+      "active": true
+    }
+  ],
+  "policies": [
+    {
+      "id": "temp_policy_0",
+      "project_id": "p_temp",
+      "permission": "allow",
+      "name": "xiegang_policy",
+      "description": null,
+      "dataset_config": {
+        "datasource_ids": [
+          "temp_ds_0"
+        ],
+        "rows_filters": {
+          "temp_ds_0": [
+            {
+              "db_regex": "^${SAMPLE_DB_NAME}$",
+              "condition": "${SAMPLE_DB_NAME}.*.user_id = 1",
+              "variables": [],
+              "field_regex": "^user_id$",
+              "table_regex": "^.*$",
+              "operator_expression": "= 1"
+            }
+          ]
+        },
+        "regex_patterns": {
+          "fields_regex_pattern": "",
+          "tables_regex_pattern": "",
+          "schemas_regex_pattern": ""
+        }
+      }
+    }
+  ],
+  "chat_roles": [
+    {
+      "id": "temp_role_0",
+      "project_id": "p_temp",
+      "name": "谢刚本人",
+      "description": null
+    }
+  ],
+  "auth_role_policies": [
+    {
+      "role_id": "temp_role_0",
+      "policy_id": "temp_policy_0"
+    }
+  ],
+  "training_pairs": [
+    {
+      "id": "temp_tp_0",
+      "project_id": "p_temp",
+      "datasource_id": "temp_ds_0",
+      "role_id": null,
+      "question": "哪些订单价格高于平均订单价格",
+      "sql": "SELECT o.order_id,\n       SUM(p.price * d.quantity * d.discount) AS total_order_price\nFROM `${SAMPLE_DB_NAME}`.`tb_order` AS o\nJOIN `${SAMPLE_DB_NAME}`.`tb_order_detail` AS d ON o.order_id = d.order_id\nJOIN `${SAMPLE_DB_NAME}`.`tb_product` AS p ON d.product_id = p.product_id\nWHERE o.order_time >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH)\nGROUP BY o.order_id\nHAVING total_order_price >\n  (SELECT AVG(total_price)\n   FROM\n     (SELECT SUM(p.price * d.quantity * d.discount) AS total_price\n      FROM `${SAMPLE_DB_NAME}`.`tb_order` AS o\n      JOIN `${SAMPLE_DB_NAME}`.`tb_order_detail` AS d ON o.order_id = d.order_id\n      JOIN `${SAMPLE_DB_NAME}`.`tb_product` AS p ON d.product_id = p.product_id\n      WHERE o.order_time >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH)\n      GROUP BY o.order_id) AS subquery)",
+      "source": "import",
+      "chat_id": null,
+      "msg_id": null,
+      "active": true
+    },
+    {
+      "id": "temp_tp_1",
+      "project_id": "p_temp",
+      "datasource_id": "temp_ds_0",
+      "role_id": null,
+      "question": "平均订单价格是多少",
+      "sql": "SELECT AVG(total_order_price) AS average_order_price\nFROM\n  (SELECT SUM(p.price * d.quantity * d.discount) AS total_order_price\n   FROM `${SAMPLE_DB_NAME}`.`tb_order` AS o\n   JOIN `${SAMPLE_DB_NAME}`.`tb_order_detail` AS d ON o.order_id = d.order_id\n   JOIN `${SAMPLE_DB_NAME}`.`tb_product` AS p ON d.product_id = p.product_id\n   WHERE o.order_time >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH)\n   GROUP BY o.order_id) AS subquery;",
+      "source": "import",
+      "chat_id": null,
+      "msg_id": null,
+      "active": true
+    },
+    {
+      "id": "temp_tp_2",
+      "project_id": "p_temp",
+      "datasource_id": "temp_ds_0",
+      "role_id": null,
+      "question": "_更新用户名为xiaoming的邮箱为123@qq.com",
+      "sql": "UPDATE `tb_user`\nSET `email` = '123@qq.com'\nWHERE `username` = 'xiaoming';",
+      "source": "import",
+      "chat_id": null,
+      "msg_id": null,
+      "active": false
+    },
+    {
+      "id": "temp_tp_3",
+      "project_id": "p_temp",
+      "datasource_id": "temp_ds_0",
+      "role_id": null,
+      "question": "_删除用户名为xiaoming的数据",
+      "sql": "DELETE FROM `tb_user`\nWHERE `username` = 'xiaoming';",
+      "source": "import",
+      "chat_id": null,
+      "msg_id": null,
+      "active": false
+    },
+    {
+      "id": "temp_tp_4",
+      "project_id": "p_temp",
+      "datasource_id": "temp_ds_0",
+      "role_id": null,
+      "question": "_插入用户名为xiaoming的数据",
+      "sql": "INSERT INTO `tb_user` (`username`, `email`, `create_time`)\nVALUES ('xiaoming', 'xiaoming@example.com', NOW());",
+      "source": "import",
+      "chat_id": null,
+      "msg_id": null,
+      "active": false
+    },
+    {
+      "id": "temp_tp_5",
+      "project_id": "p_temp",
+      "datasource_id": "temp_ds_0",
+      "role_id": null,
+      "question": "查询最近3个月内的平均订单价格。",
+      "sql": "SELECT AVG(total_order_price) AS average_order_price\nFROM\n  (SELECT SUM(p.price * d.quantity * d.discount) AS total_order_price\n   FROM `${SAMPLE_DB_NAME}`.`tb_order` AS o\n   JOIN `${SAMPLE_DB_NAME}`.`tb_order_detail` AS d ON o.order_id = d.order_id\n   JOIN `${SAMPLE_DB_NAME}`.`tb_product` AS p ON d.product_id = p.product_id\n   WHERE o.order_time >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH)\n   GROUP BY o.order_id) AS subquery;",
+      "source": "import",
+      "chat_id": null,
+      "msg_id": null,
+      "active": true
+    },
+    {
+      "id": "temp_tp_6",
+      "project_id": "p_temp",
+      "datasource_id": "temp_ds_0",
+      "role_id": null,
+      "question": "查看各个种类商品的出售情况",
+      "sql": "SELECT `c`.`category_name`,\n       SUM(`d`.`quantity`) AS `total_quantity_sold`\nFROM `${SAMPLE_DB_NAME}`.`tb_category` AS `c`\nJOIN `${SAMPLE_DB_NAME}`.`tb_product` AS `p` ON `c`.`category_id` = `p`.`category_id`\nJOIN `${SAMPLE_DB_NAME}`.`tb_order_detail` AS `d` ON `p`.`product_id` = `d`.`product_id`\nGROUP BY `c`.`category_name`",
+      "source": "import",
+      "chat_id": null,
+      "msg_id": null,
+      "active": true
+    },
+    {
+      "id": "temp_tp_7",
+      "project_id": "p_temp",
+      "datasource_id": "temp_ds_0",
+      "role_id": null,
+      "question": "查询柯武购买过的订单时间、商品名称、分类、价格、折扣",
+      "sql": "SELECT o.order_time, p.product_name, c.category_name, p.price, d.discount FROM ${SAMPLE_DB_NAME}.tb_user AS u JOIN ${SAMPLE_DB_NAME}.tb_order AS o ON u.user_id = o.user_id JOIN ${SAMPLE_DB_NAME}.tb_order_detail AS d ON o.order_id = d.order_id JOIN ${SAMPLE_DB_NAME}.tb_product AS p ON d.product_id = p.product_id JOIN ${SAMPLE_DB_NAME}.tb_category AS c ON p.category_id = c.category_id WHERE u.name = '柯武' AND o.order_time >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH)",
+      "source": "import",
+      "chat_id": null,
+      "msg_id": null,
+      "active": true
+    }
+  ],
+  "datasources": [
+    {
+      "id": "temp_ds_0",
+      "project_id": "p_temp",
+      "name": "购物数据库",
+      "engine": "mysql",
+      "sample_questions": null,
+      "desc": "该数据库用于管理购物平台的用户、商品、订单及分类信息，支持商品分类管理、订单处理和用户信息维护。",
+      "meta_status": "success",
+      "meta_error": "",
+      "schema_count": 1,
+      "table_count": 5,
+      "field_count": 20
+    }
+  ],
+  "connections": [
+    {
+      "id": "temp_dsdb_0",
+      "datasource_id": "temp_ds_0",
+      "db": "${SAMPLE_DB_NAME}",
+      "host": "${MYSQL_HOST}",
+      "port": ${MYSQL_PORT},
+      "user": "${MYSQL_USER}",
+      "password": "${MYSQL_PASSWORD}",
+      "db_version": null,
+      "proxy_host": null,
+      "proxy_port": null,
+      "atst_link_id": null,
+      "securetunnel_id": null,
+      "extra_config": null
+    }
+  ],
+  "meta_schemas": [
+    {
+      "id": "temp_schema_0",
+      "name": "${SAMPLE_DB_NAME}",
+      "origin_desc": "",
+      "curr_desc": "",
+      "curr_desc_stat": "origin",
+      "custom_configs": null,
+      "datasource_id": "temp_ds_0"
+    }
+  ],
+  "meta_tables": [
+    {
+      "id": "temp_table_0",
+      "name": "tb_user",
+      "full_name": "${SAMPLE_DB_NAME}.tb_user",
+      "origin_desc": "",
+      "curr_desc": "用户基本信息表。查询性别的时候，请改写为用户易读的。",
+      "curr_desc_stat": "human",
+      "schema_id": "temp_schema_0",
+      "datasource_id": "temp_ds_0",
+      "table_type": "table"
+    },
+    {
+      "id": "temp_table_1",
+      "name": "tb_category",
+      "full_name": "${SAMPLE_DB_NAME}.tb_category",
+      "origin_desc": "",
+      "curr_desc": "商品分类信息，用于商品分类管理",
+      "curr_desc_stat": "ai",
+      "schema_id": "temp_schema_0",
+      "datasource_id": "temp_ds_0",
+      "table_type": "table"
+    },
+    {
+      "id": "temp_table_2",
+      "name": "tb_order",
+      "full_name": "${SAMPLE_DB_NAME}.tb_order",
+      "origin_desc": "",
+      "curr_desc": "订单信息，包括用户、状态、支付信息和下单时间",
+      "curr_desc_stat": "ai",
+      "schema_id": "temp_schema_0",
+      "datasource_id": "temp_ds_0",
+      "table_type": "table"
+    },
+    {
+      "id": "temp_table_3",
+      "name": "tb_order_detail",
+      "full_name": "${SAMPLE_DB_NAME}.tb_order_detail",
+      "origin_desc": "",
+      "curr_desc": "订单明细信息，包括商品、数量和折扣。订单价格是该订单下所有的商品价格总和，商品价格=商品单价*数量*折扣。",
+      "curr_desc_stat": "human",
+      "schema_id": "temp_schema_0",
+      "datasource_id": "temp_ds_0",
+      "table_type": "table"
+    },
+    {
+      "id": "temp_table_4",
+      "name": "tb_product",
+      "full_name": "${SAMPLE_DB_NAME}.tb_product",
+      "origin_desc": "",
+      "curr_desc": "商品信息，包括名称、分类和价格",
+      "curr_desc_stat": "ai",
+      "schema_id": "temp_schema_0",
+      "datasource_id": "temp_ds_0",
+      "table_type": "table"
+    }
+  ],
+  "meta_fields": [
+    {
+      "id": "temp_field_0",
+      "name": "user_id",
+      "full_name": "${SAMPLE_DB_NAME}.tb_user.user_id",
+      "origin_desc": "",
+      "curr_desc": "用户 ID（主键）",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "NUMERIC",
+      "table_id": "temp_table_0",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_1",
+      "name": "username",
+      "full_name": "${SAMPLE_DB_NAME}.tb_user.username",
+      "origin_desc": "",
+      "curr_desc": "用户名",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "STRING",
+      "table_id": "temp_table_0",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "person_name",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_2",
+      "name": "email",
+      "full_name": "${SAMPLE_DB_NAME}.tb_user.email",
+      "origin_desc": "",
+      "curr_desc": "邮箱",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "STRING",
+      "table_id": "temp_table_0",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_3",
+      "name": "create_time",
+      "full_name": "${SAMPLE_DB_NAME}.tb_user.create_time",
+      "origin_desc": "",
+      "curr_desc": "注册时间",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "DATETIME",
+      "table_id": "temp_table_0",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_4",
+      "name": "name",
+      "full_name": "${SAMPLE_DB_NAME}.tb_user.name",
+      "origin_desc": "",
+      "curr_desc": "姓名",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "STRING",
+      "table_id": "temp_table_0",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "person_name",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_5",
+      "name": "phone",
+      "full_name": "${SAMPLE_DB_NAME}.tb_user.phone",
+      "origin_desc": "",
+      "curr_desc": "手机号",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "STRING",
+      "table_id": "temp_table_0",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_6",
+      "name": "gender",
+      "full_name": "${SAMPLE_DB_NAME}.tb_user.gender",
+      "origin_desc": "性别",
+      "curr_desc": "性别（1=男，0=女）",
+      "curr_desc_stat": "human",
+      "sample_data": null,
+      "data_type": "NUMERIC",
+      "table_id": "temp_table_0",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_7",
+      "name": "category_id",
+      "full_name": "${SAMPLE_DB_NAME}.tb_category.category_id",
+      "origin_desc": "分类唯一标识，自增主键，关联 tb_product.category_id",
+      "curr_desc": "分类唯一标识，自增主键，关联 tb_product.category_id",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "NUMERIC",
+      "table_id": "temp_table_1",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_8",
+      "name": "category_name",
+      "full_name": "${SAMPLE_DB_NAME}.tb_category.category_name",
+      "origin_desc": "分类名称（如 电子产品，电脑配件），用于筛选商品",
+      "curr_desc": "分类名称（如 电子产品，电脑配件），用于筛选商品",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "STRING",
+      "table_id": "temp_table_1",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_9",
+      "name": "order_id",
+      "full_name": "${SAMPLE_DB_NAME}.tb_order.order_id",
+      "origin_desc": "订单 ID（主键）",
+      "curr_desc": "订单 ID（主键）",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "NUMERIC",
+      "table_id": "temp_table_2",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_10",
+      "name": "user_id",
+      "full_name": "${SAMPLE_DB_NAME}.tb_order.user_id",
+      "origin_desc": "用户 ID",
+      "curr_desc": "用户 ID",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "NUMERIC",
+      "table_id": "temp_table_2",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_11",
+      "name": "order_status",
+      "full_name": "${SAMPLE_DB_NAME}.tb_order.order_status",
+      "origin_desc": "订单状态（待支付 / 已支付 / 已取消）",
+      "curr_desc": "订单状态包括：待支付 (pending)、已支付 (paid) 和已取消 (cancelled)。",
+      "curr_desc_stat": "human",
+      "sample_data": null,
+      "data_type": "STRING",
+      "table_id": "temp_table_2",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_12",
+      "name": "payment_bank",
+      "full_name": "${SAMPLE_DB_NAME}.tb_order.payment_bank",
+      "origin_desc": "支付银行",
+      "curr_desc": "支付银行",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "STRING",
+      "table_id": "temp_table_2",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_13",
+      "name": "order_time",
+      "full_name": "${SAMPLE_DB_NAME}.tb_order.order_time",
+      "origin_desc": "下单时间",
+      "curr_desc": "下单时间",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "DATETIME",
+      "table_id": "temp_table_2",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_14",
+      "name": "detail_id",
+      "full_name": "${SAMPLE_DB_NAME}.tb_order_detail.detail_id",
+      "origin_desc": "明细 ID（主键）",
+      "curr_desc": "明细 ID（主键）",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "NUMERIC",
+      "table_id": "temp_table_3",
+      "datasource_id": "temp_ds_0",
+      "visibility": false,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_15",
+      "name": "order_id",
+      "full_name": "${SAMPLE_DB_NAME}.tb_order_detail.order_id",
+      "origin_desc": "订单 ID",
+      "curr_desc": "订单 ID",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "NUMERIC",
+      "table_id": "temp_table_3",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_16",
+      "name": "product_id",
+      "full_name": "${SAMPLE_DB_NAME}.tb_order_detail.product_id",
+      "origin_desc": "商品 ID",
+      "curr_desc": "商品 ID",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "NUMERIC",
+      "table_id": "temp_table_3",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_17",
+      "name": "quantity",
+      "full_name": "${SAMPLE_DB_NAME}.tb_order_detail.quantity",
+      "origin_desc": "购买数量",
+      "curr_desc": "购买数量",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "NUMERIC",
+      "table_id": "temp_table_3",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_18",
+      "name": "discount",
+      "full_name": "${SAMPLE_DB_NAME}.tb_order_detail.discount",
+      "origin_desc": "折扣（如 0.9 表示 9 折）",
+      "curr_desc": "折扣（如 0.9 表示 9 折）",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "NUMERIC",
+      "table_id": "temp_table_3",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_19",
+      "name": "product_id",
+      "full_name": "${SAMPLE_DB_NAME}.tb_product.product_id",
+      "origin_desc": "商品 ID（主键）",
+      "curr_desc": "商品 ID（主键）",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "NUMERIC",
+      "table_id": "temp_table_4",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_20",
+      "name": "product_name",
+      "full_name": "${SAMPLE_DB_NAME}.tb_product.product_name",
+      "origin_desc": "商品名称",
+      "curr_desc": "商品名称",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "STRING",
+      "table_id": "temp_table_4",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_21",
+      "name": "category_id",
+      "full_name": "${SAMPLE_DB_NAME}.tb_product.category_id",
+      "origin_desc": "分类 ID",
+      "curr_desc": "分类 ID",
+      "curr_desc_stat": "origin",
+      "sample_data": null,
+      "data_type": "NUMERIC",
+      "table_id": "temp_table_4",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    },
+    {
+      "id": "temp_field_22",
+      "name": "price",
+      "full_name": "${SAMPLE_DB_NAME}.tb_product.price",
+      "origin_desc": "商品价格",
+      "curr_desc": "商品价格（单位元）",
+      "curr_desc_stat": "human",
+      "sample_data": null,
+      "data_type": "NUMERIC",
+      "table_id": "temp_table_4",
+      "datasource_id": "temp_ds_0",
+      "visibility": true,
+      "identifiable_type": "plain",
+      "is_vector_synced": true
+    }
+  ],
+  "_id_map_debug": {
+    "pf_2yI8VdWKQeGcpepFjbQrUp": "temp_pf_0",
+    "entry_3ag4nRAWSrkEEAnSqiwymI": "temp_entry_0",
+    "ds_3YwxTDexTyAkRuNN47gfrM": "temp_ds_0",
+    "dsdb_3j4DuAa8qaWmCr1LEkHaZ2": "temp_dsdb_0",
+    "schema_5723": "temp_schema_0",
+    "table_17729": "temp_table_0",
+    "table_17772": "temp_table_1",
+    "table_17773": "temp_table_2",
+    "table_17774": "temp_table_3",
+    "table_17775": "temp_table_4",
+    "field_247968": "temp_field_0",
+    "field_247969": "temp_field_1",
+    "field_247970": "temp_field_2",
+    "field_247971": "temp_field_3",
+    "field_248427": "temp_field_4",
+    "field_248428": "temp_field_5",
+    "field_248429": "temp_field_6",
+    "field_248430": "temp_field_7",
+    "field_248431": "temp_field_8",
+    "field_248432": "temp_field_9",
+    "field_248433": "temp_field_10",
+    "field_248434": "temp_field_11",
+    "field_248435": "temp_field_12",
+    "field_248436": "temp_field_13",
+    "field_248437": "temp_field_14",
+    "field_248438": "temp_field_15",
+    "field_248439": "temp_field_16",
+    "field_248440": "temp_field_17",
+    "field_248441": "temp_field_18",
+    "field_248442": "temp_field_19",
+    "field_248443": "temp_field_20",
+    "field_248444": "temp_field_21",
+    "field_248445": "temp_field_22",
+    "policy_55wOcy6JZYCwT6b4TiSOK2": "temp_policy_0",
+    "role_1XCI2SmTi2n05cmTqxihdk": "temp_role_0",
+    "bot_QrFOq1LWK8XvN2Zu9twNf": "temp_bot_0",
+    "tp_1knYPpme13Sy1f4wxeD067": "temp_tp_0",
+    "tp_2w7Ctx59sEw1huLMFgZPzp": "temp_tp_1",
+    "tp_3HVqNjAM2GzYSn4q8cBv53": "temp_tp_2",
+    "tp_4FRoBkv9Mh1a3lPu00Fkji": "temp_tp_3",
+    "tp_5JJKI2tJVgXGVJBMEfTXWF": "temp_tp_4",
+    "tp_6cCLshYUXbhFPTKtFneZMT": "temp_tp_5",
+    "tp_76GtUXVxGHyNux0rppY5yN": "temp_tp_6",
+    "tp_7klsNpFYCZw6wmJ9aDjlJ": "temp_tp_7"
+  }
+}
