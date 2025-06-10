@@ -111,7 +111,7 @@ HTTP_CODE=$(curl -s -w "%{http_code}" -X POST "${AUTH_API_BASE_URL}/automation/i
   -H "Authorization: Bearer ${AUTH_SYS_ADMIN_KEY}" \
   -F "file=@project-new.json" -o /dev/null)
 
-if [ "$HTTP_CODE" = "200" ]; then
+if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "201" ]; then
   log "Project data imported successfully"
 else
   log "Failed to import project data (HTTP code: ${HTTP_CODE})"
