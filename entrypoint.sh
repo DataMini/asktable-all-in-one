@@ -24,6 +24,8 @@ export AT_HTTP_HOST_EXTERNAL=${BASE_URL}/api
 export INIT_SAMPLE_DATA=1
 export AUTH_API_BASE_URL='http://127.0.0.1:8689/auth'
 
+# for mcp sse server
+export MCP_SSE_SERVER_PORT=8690
 
 # 设置AT-Web参数
 envsubst < /usr/share/nginx/html/env-config.js.template > /usr/share/nginx/html/env-config.js

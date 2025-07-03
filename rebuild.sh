@@ -16,10 +16,10 @@ echo "web: $at_web_dir"
 # cd $at_server_dir && docker build -t registry.cn-shanghai.aliyuncs.com/datamini/asktable-server-bin:latest .
 
 # # rebuild auth
-cd $at_auth_dir && docker build -t registry.cn-shanghai.aliyuncs.com/datamini/asktable-auth:latest .
+# cd $at_auth_dir && docker build -t registry.cn-shanghai.aliyuncs.com/datamini/asktable-auth:latest .
 
 # rebuild web
 # cd $at_web_dir && docker build --build-arg USE_MIRROR=1 -t registry.cn-shanghai.aliyuncs.com/datamini/asktable-web:latest .
 
 
-cd $at_all_in_one_dir && docker build -t registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one:latest . && docker-compose down && rm -rf mysql_data && docker-compose up -d
+cd $at_all_in_one_dir && docker build --build-arg USE_MIRROR=1 -t registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one:latest . && docker-compose down && rm -rf mysql_data && docker-compose up -d
