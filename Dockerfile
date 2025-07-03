@@ -11,12 +11,8 @@ FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-server-bin:latest
 # 安装 supervisord、nginx
 RUN apt-get update && apt-get install -y supervisor nginx telnet gettext-base default-mysql-client curl
 
-# 安装 mcp server
-RUN if [ "$USE_MIRROR" = "1" ]; then \
-        pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple && \
-        pip config set global.trusted-host pypi.tuna.tsinghua.edu.cn; \
-    fi && \
-    pip install asktable-mcp-server
+# 安装 uv
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # 复制各服务文件到主镜像
 COPY --from=auth /at_auth /at_auth
