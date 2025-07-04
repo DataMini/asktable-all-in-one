@@ -8,6 +8,7 @@ export AT_WEB_DEPLOYMENT_MODEL=local
 
 # for at-auth
 export AT_API_BASE_URL='http://127.0.0.1:8688/api/v1'
+export AT_API_BASE_URL_WITHOUT_V1='http://127.0.0.1:8688/api'
 export AT_SYS_API_KEY=asktable
 export AUTH_SYS_ADMIN_KEY=asktable
 export AUTH_MAX_USERS=1
