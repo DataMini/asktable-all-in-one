@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y supervisor nginx telnet gettext-base de
 
 # 安装 uv
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-RUN . $HOME/.local/bin/env && uv tool install asktable-mcp-server@0.2.17
+RUN . $HOME/.local/bin/env && uv tool install asktable-mcp-server@0.2.18
 
 # 复制各服务文件到主镜像
 COPY --from=auth /at_auth /at_auth
