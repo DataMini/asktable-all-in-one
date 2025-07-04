@@ -76,7 +76,7 @@ docker build -t asktable-all-in-one .
 容器内部服务端口映射：
 - **AskTable Server**: 8688
 - **AskTable Auth**: 8689  
-- **MCP SSE Server**: 8095
+- **MCP SSE Server**: 8690
 - **Nginx**: 80 (对外端口)
 
 
