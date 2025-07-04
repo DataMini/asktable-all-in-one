@@ -10,9 +10,9 @@ on:
       - 'version.txt'
 
 jobs:
-  docker:
+  # 构建镜像阶段
+  build-image:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -54,8 +54,12 @@ jobs:
         cache-from: type=gha # 启用 GitHub Actions 缓存，适用于跨工作流缓存
         cache-to: type=gha,mode=max # 启用缓存并优化构建
 
-
-    - name: Execute deployment script-sh4  # 只更新重启，不提供 docker-compose.yaml 文件
+  # 部署SH4阶段
+  deploy-sh4:
+    runs-on: ubuntu-latest
+    needs: build-image
+    steps:
+    - name: Deploy to SH4
       uses: appleboy/ssh-action@v0.1.10
       with:
         host: ${{ secrets.SERVER_HOST_SH4 }}
@@ -63,14 +67,16 @@ jobs:
         password: ${{ secrets.SERVER_PASSWORD }}
         port: 22
         script: |
-          # 进入部署目录
           cd /root/sh4/at-all-in-one/
-          # 拉取最新镜像
           docker-compose pull && docker-compose down
-          # 启动容器
           docker-compose up -d
 
-    - name: Execute deployment script-sh1  # 只更新重启，不提供 docker-compose.yaml 文件
+  # 部署SH1阶段
+  deploy-sh1:
+    runs-on: ubuntu-latest
+    needs: build-image
+    steps:
+    - name: Deploy to SH1
       uses: appleboy/ssh-action@v0.1.10
       with:
         host: ${{ secrets.SERVER_HOST_SH1 }}
@@ -78,9 +84,6 @@ jobs:
         password: ${{ secrets.SERVER_PASSWORD }}
         port: 22
         script: |
-          # 进入部署目录
           cd /root/sh1/at-enterprise-a/
-          # 拉取最新镜像
           docker compose pull && docker compose down
-          # 启动容器
           docker compose up -d
