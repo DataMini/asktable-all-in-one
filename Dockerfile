@@ -1,8 +1,10 @@
-FROM ghcr.io/astral-sh/uv:python3.11-bookworm-slim
 # 使用已有的三种镜像作为构建阶段源
 FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-auth:latest AS auth
 FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-web:latest AS web
 FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-server-bin:latest AS server
+
+# 主镜像阶段
+FROM ghcr.io/astral-sh/uv:python3.11-bookworm-slim
 
 # 安装 supervisord、nginx
 RUN apt-get update && apt-get install -y supervisor nginx telnet gettext-base default-mysql-client curl
