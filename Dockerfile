@@ -10,7 +10,6 @@ RUN uv tool install asktable-mcp-server@latest
 
 # 复制各服务文件到主镜像
 COPY --from=auth /at_auth /at_auth
-COPY --from=server /at_server /at_server
 COPY --from=web /usr/share/nginx/html /usr/share/nginx/html
 COPY --from=web /etc/nginx/nginx.conf /etc/nginx/nginx.conf
 
