@@ -101,6 +101,6 @@ jobs:
         password: ${{ secrets.SERVER_PASSWORD }}
         port: 22
         script: |
-          cd /root/sh3/at-all-in-one/
+          cd /root/sh3/at-allinone-v2/
           docker compose pull && docker compose down
           docker compose up -d
