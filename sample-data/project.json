@@ -7,7 +7,7 @@
     {
       "id": "temp_pf_0",
       "project_id": "p_temp",
-      "general_preference": "1.如果涉及到订单查询并且没有表明准确时间的话，请只查询最近6个月的订单数据",
+      "general_preference": "1.如果涉及到订单查询并且没有表明准确时间的话，请只查询最近24个月的订单数据",
       "sql_preference": null
     }
   ],
