@@ -50,7 +50,7 @@ jobs:
           registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one:${{ env.VERSION }}
           registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one:latest
           datamini/asktable-all-in-one:latest
-        platforms: linux/amd64 #,linux/arm64
+        platforms: linux/amd64 ,linux/arm64
         cache-from: type=gha # 启用 GitHub Actions 缓存，适用于跨工作流缓存
         cache-to: type=gha,mode=max # 启用缓存并优化构建
 
