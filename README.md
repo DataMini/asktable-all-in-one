@@ -25,6 +25,7 @@ AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，�
 
 **趋势预测分析**
 精准预判，决策不“迷路”。察言观数能够通过已有的数据和结果，通过理解用户的自然语言，识别意图，并给出趋势预测和最有利的决策建议。
+<img width="500" height="281" alt="image" src="https://github.com/user-attachments/assets/0dfb4b21-81b9-4045-8341-c3132867c3af" />
 
 
 &nbsp;
