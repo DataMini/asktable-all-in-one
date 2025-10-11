@@ -7,7 +7,6 @@ AskTable AI 致力于让每个人都能轻松、平等地从数据中获取洞�
 - [如何单机安装 AskTable](https://docs.asktable.com/docs/pricing-and-deployment/private-deployment-all-in-one)
 
 ## 服务组件
-
 本 All-in-One 容器包含以下服务组件：
 
 - **AskTable Server**: 核心服务
