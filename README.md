@@ -27,7 +27,7 @@ AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，�
 精准预判，决策不“迷路”。察言观数能够通过已有的数据和结果，通过理解用户的自然语言，识别意图，并给出趋势预测和最有利的决策建议。
 
 
-
+&nbsp;
 
 ## 在阿里云部署步骤
 
@@ -75,7 +75,7 @@ http://123.123.123.123:8000/
 <img width="1080" height="550" alt="image" src="https://github.com/user-attachments/assets/0ae4cf9a-5831-4f13-a5b0-89abd524f5e5" />
 
 
-
+&nbsp;
 ## 在 Sealos 部署步骤
 
 ### **1. 配置 AskTable**
@@ -92,15 +92,13 @@ http://123.123.123.123:8000/
 
 ![image](https://github.com/user-attachments/assets/aabe6fd6-4829-4acb-ba0b-316af9dd0826)
 
-![image](https://github.com/user-attachments/assets/44a50063-71a0-4981-a37e-863349cdefe2)
-
 
 ### **3. 打开"公网地址"，即可访问 AskTable**
 
 ![image](https://github.com/user-attachments/assets/4d696986-9be9-48b3-b3e0-c333aa9d8b30)
 
 
-
+&nbsp;
 ## 部署后访问信息
 
 ### 主要访问地址
@@ -118,6 +116,7 @@ http://123.123.123.123:8000/
 - **MCP SSE Server**: 8690
 - **Nginx**: 80 (对外端口)
 
+&nbsp;
 
 ## 服务组件
 本 All-in-One 容器包含以下服务组件：
@@ -128,6 +127,8 @@ http://123.123.123.123:8000/
 - **MCP SSE Server**: Model Context Protocol Server-Sent Events 服务
 - **Nginx**: 反向代理和负载均衡
 - **MySQL**: 数据存储（可选，支持外部数据库）
+
+&nbsp;
 
 ## 构建选项
 
@@ -150,7 +151,7 @@ docker build -t asktable-all-in-one .
 **支持的镜像源：**
 - 清华大学镜像源：`https://pypi.tuna.tsinghua.edu.cn/simple`
 
-  
+&nbsp;
 
 ## 联系我们
 
