@@ -25,6 +25,7 @@ AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，�
 
 **趋势预测分析**
 精准预判，决策不“迷路”。察言观数能够通过已有的数据和结果，通过理解用户的自然语言，识别意图，并给出趋势预测和最有利的决策建议。
+
 <img width="500" height="281" alt="image" src="https://github.com/user-attachments/assets/0dfb4b21-81b9-4045-8341-c3132867c3af" />
 
 
@@ -64,11 +65,13 @@ AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，�
 
 点击 **“确认订单”** 并 **“立即部署”**。  
 系统将在约 **2 分钟内** 完成自动部署流程。
+
 <img width="540" height="468" alt="image" src="https://github.com/user-attachments/assets/ef027e6f-3368-4f82-8e1a-a021dae072b5" />
 
 部署完成后，页面将生成登录地址，例如：http://123.123.123.123:8000/ 
 
 使用您设置的管理员账号登录，即可访问系统，开始使用 **AskTable**。
+
 <img width="540" height="275" alt="image" src="https://github.com/user-attachments/assets/0ae4cf9a-5831-4f13-a5b0-89abd524f5e5" />
 
 
@@ -79,14 +82,16 @@ AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，�
 
 `LLM_API_KEY` AI 模型令牌，是以"asktable-"开头的字符串。登录 [AskTable](https://cloud.asktable.com/?dialog=deployment) 获取。其他配置项可使用默认值。
 
-<div style="text-align: center;">
-  <img src="https://github.com/user-attachments/assets/3233df9d-d03b-4f9d-b1b5-3649b0aed4ad" alt="Image" width="500">
-</div>
+
+<img width="707" height="507" alt="image" src="https://github.com/user-attachments/assets/80270725-25ba-487b-905c-e6eb510fcbfc" />
+
+
 
 &nbsp;
 ### **2. 点击"部署应用"**
 
 你可以在"应用管理"中查看部署状态。
+
 <img width="565" height="183" alt="image" src="https://github.com/user-attachments/assets/87d1ad04-6f0b-4856-a144-fee68aa4665d" />
 
 &nbsp;
