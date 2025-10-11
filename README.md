@@ -1,15 +1,10 @@
-<img width="958" height="832" alt="image" src="https://github.com/user-attachments/assets/93fcad48-69ba-4784-960e-32d142678cd5" /># AskTable All-in-One
+**察言观数（AskTable）是领先的企业级 AI 数据智能体（AI Data Agent） 平台**，为企业提供基于自然语言的数据分析体验，广泛支持 Excel、数据库和数据仓库的智能查询，应用于运营、财务、人事、销售等业务场景，解决企业管理和决策领域的关键问题，为企业打造新一代数据洞察与决策体系。
 
-AskTable AI 致力于让每个人都能轻松、平等地从数据中获取洞察。
-
+**AskTable 的目标：让每个人都能轻松、愉快地从数据中获取洞察。**
 - [AskTable 官网](https://asktable.com/)
 
 - [如何单机安装 AskTable](https://docs.asktable.com/docs/pricing-and-deployment/private-deployment-all-in-one)
 
-
-**察言观数（AskTable）是领先的企业级 AI 数据智能体（AI Data Agent） 平台**，为企业提供基于自然语言的数据分析体验，广泛支持 Excel、数据库和数据仓库的智能查询，应用于运营、财务、人事、销售等业务场景，解决企业管理和决策领域的关键问题，为企业打造新一代数据洞察与决策体系。
-
-**AskTable 的目标：让每个人都能轻松、愉快地从数据中获取洞察。**
 
 ## 两大产品功能
 ### AI 问答查数
@@ -30,38 +25,6 @@ AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，�
 精准预判，决策不“迷路”。察言观数能够通过已有的数据和结果，通过理解用户的自然语言，识别意图，并给出趋势预测和最有利的决策建议。
 
 
-
-
-## 服务组件
-本 All-in-One 容器包含以下服务组件：
-
-- **AskTable Server**: 核心服务
-- **AskTable Auth**: 用户认证和权限管理服务  
-- **AskTable Web**: 前端 Web 界面
-- **MCP SSE Server**: Model Context Protocol Server-Sent Events 服务
-- **Nginx**: 反向代理和负载均衡
-- **MySQL**: 数据存储（可选，支持外部数据库）
-
-## 构建选项
-
-### 使用国内镜像源
-
-在中国网络环境下，可以通过构建参数启用国内镜像源来加速 Python 包的下载：
-
-```bash
-# 使用国内镜像源构建
-docker build --build-arg USE_MIRROR=1 -t asktable-all-in-one .
-
-# 不使用镜像源构建（默认）
-docker build -t asktable-all-in-one .
-```
-
-**构建参数说明：**
-- `USE_MIRROR=1`: 启用清华大学 PyPI 镜像源
-- `USE_MIRROR=0` 或不设置: 使用官方 PyPI 源（默认）
-
-**支持的镜像源：**
-- 清华大学镜像源：`https://pypi.tuna.tsinghua.edu.cn/simple`
 
 
 ## 在阿里云部署步骤
@@ -111,7 +74,6 @@ http://123.123.123.123:8000/
 
 
 
-
 ## 在 Sealos 部署步骤
 
 ### **1. 配置 AskTable**
@@ -128,13 +90,14 @@ http://123.123.123.123:8000/
 
 ![image](https://github.com/user-attachments/assets/aabe6fd6-4829-4acb-ba0b-316af9dd0826)
 
-
 ![image](https://github.com/user-attachments/assets/44a50063-71a0-4981-a37e-863349cdefe2)
 
 
 ### **3. 打开"公网地址"，即可访问 AskTable**
 
 ![image](https://github.com/user-attachments/assets/4d696986-9be9-48b3-b3e0-c333aa9d8b30)
+
+
 
 ## 部署后访问信息
 
@@ -153,6 +116,39 @@ http://123.123.123.123:8000/
 - **MCP SSE Server**: 8690
 - **Nginx**: 80 (对外端口)
 
+
+## 服务组件
+本 All-in-One 容器包含以下服务组件：
+
+- **AskTable Server**: 核心服务
+- **AskTable Auth**: 用户认证和权限管理服务  
+- **AskTable Web**: 前端 Web 界面
+- **MCP SSE Server**: Model Context Protocol Server-Sent Events 服务
+- **Nginx**: 反向代理和负载均衡
+- **MySQL**: 数据存储（可选，支持外部数据库）
+
+## 构建选项
+
+### 使用国内镜像源
+
+在中国网络环境下，可以通过构建参数启用国内镜像源来加速 Python 包的下载：
+
+```bash
+# 使用国内镜像源构建
+docker build --build-arg USE_MIRROR=1 -t asktable-all-in-one .
+
+# 不使用镜像源构建（默认）
+docker build -t asktable-all-in-one .
+```
+
+**构建参数说明：**
+- `USE_MIRROR=1`: 启用清华大学 PyPI 镜像源
+- `USE_MIRROR=0` 或不设置: 使用官方 PyPI 源（默认）
+
+**支持的镜像源：**
+- 清华大学镜像源：`https://pypi.tuna.tsinghua.edu.cn/simple`
+
+  
 
 ## 联系我们
 
