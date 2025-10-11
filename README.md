@@ -31,70 +31,11 @@ AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，�
 
 &nbsp;
 
-## 在阿里云部署步骤
+## 部署方式
 
-### **第一步：访问部署入口**
+### - [在阿里云部署](https://docs.asktable.com/docs/pricing-and-deployment/private-deployment-on-aliyun)
 
-访问阿里云市场的 **AskTable 私有部署**。该页面提供官方镜像，确保部署过程稳定高效。
-
-<img width="525" height="316" alt="image" src="https://github.com/user-attachments/assets/019a7166-a175-468e-9007-46536eed4894" />
-
-
-&nbsp;
-### **第二步：选择实例规格并初始化配置**
-
-根据数据处理需求选择合适的 **ECS 实例规格**，**建议最低配置为：**
-
-- 2 核 CPU  
-- 4 GB 内存
-
-  <img width="479" height="416" alt="image" src="https://github.com/user-attachments/assets/3f960520-1517-42c7-9679-d2eb5015c4cb" />
-
-
-在部署界面填写如下初始化信息：
-
-- `AskTable LLM_API_KEY`
-- 管理员用户名
-- 管理员登录密码
-这一步将自动完成系统初始化与权限配置。
-
-&nbsp;
-### **第三步：确认并启动部署**
-
-点击 **“确认订单”** 并 **“立即部署”**。系统将在约 **2 分钟内** 完成自动部署流程。
-
-<img width="540" height="468" alt="image" src="https://github.com/user-attachments/assets/ef027e6f-3368-4f82-8e1a-a021dae072b5" />
-
-部署完成后，页面将生成登录地址，例如：http://123.123.123.123:8000/ 
-
-使用您设置的管理员账号登录，即可访问系统，开始使用 **AskTable**。
-
-<img width="540" height="275" alt="image" src="https://github.com/user-attachments/assets/0ae4cf9a-5831-4f13-a5b0-89abd524f5e5" />
-
-
-&nbsp;
-## 在 Sealos 部署步骤
-
-### **1. 配置 AskTable**
-
-`LLM_API_KEY` AI 模型令牌，是以"asktable-"开头的字符串。登录 [AskTable](https://cloud.asktable.com/?dialog=deployment) 获取。其他配置项可使用默认值。
-
-
-<img width="505" height="362" alt="image" src="https://github.com/user-attachments/assets/80270725-25ba-487b-905c-e6eb510fcbfc" />
-
-
-
-&nbsp;
-### **2. 点击"部署应用"**
-
-你可以在"应用管理"中查看部署状态。
-
-<img width="565" height="183" alt="image" src="https://github.com/user-attachments/assets/87d1ad04-6f0b-4856-a144-fee68aa4665d" />
-
-&nbsp;
-### **3. 打开"公网地址"，即可访问 AskTable**
-
-<img width="445" height="291" alt="image" src="https://github.com/user-attachments/assets/074507ab-5060-47ec-bb60-96dad6c1c018" />
+### - [在 Sealos 部署](https://docs.asktable.com/docs/pricing-and-deployment/deploy-on-sealos)
 
 
 &nbsp;
