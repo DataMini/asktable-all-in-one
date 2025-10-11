@@ -35,12 +35,10 @@ AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，�
 
 ### **第一步：访问部署入口**
 
-访问阿里云市场的 **AskTable 私有部署**。
+访问阿里云市场的 **AskTable 私有部署**。该页面提供官方镜像，确保部署过程稳定高效。
 
 <img width="525" height="316" alt="image" src="https://github.com/user-attachments/assets/019a7166-a175-468e-9007-46536eed4894" />
 
-
-该页面提供官方镜像，确保部署过程稳定高效。
 
 &nbsp;
 ### **第二步：选择实例规格并初始化配置**
@@ -83,7 +81,7 @@ AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，�
 `LLM_API_KEY` AI 模型令牌，是以"asktable-"开头的字符串。登录 [AskTable](https://cloud.asktable.com/?dialog=deployment) 获取。其他配置项可使用默认值。
 
 
-<img width="707" height="507" alt="image" src="https://github.com/user-attachments/assets/80270725-25ba-487b-905c-e6eb510fcbfc" />
+<img width="505" height="362" alt="image" src="https://github.com/user-attachments/assets/80270725-25ba-487b-905c-e6eb510fcbfc" />
 
 
 
