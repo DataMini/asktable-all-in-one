@@ -6,7 +6,7 @@
 - [如何单机安装 AskTable](https://docs.asktable.com/docs/pricing-and-deployment/private-deployment-all-in-one)
 
 
-&nbsp;&nbsp
+&nbsp;
 
 ## 两大产品功能
 ### AI 问答查数
