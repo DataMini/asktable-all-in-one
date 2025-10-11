@@ -33,9 +33,9 @@ AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，�
 
 ## 部署方式
 
-### - [在阿里云部署](https://docs.asktable.com/docs/pricing-and-deployment/private-deployment-on-aliyun)
+-在阿里云部署： [文档链接](https://docs.asktable.com/docs/pricing-and-deployment/private-deployment-on-aliyun)
 
-### - [在 Sealos 部署](https://docs.asktable.com/docs/pricing-and-deployment/deploy-on-sealos)
+-在 Sealos 部署: [文档链接](https://docs.asktable.com/docs/pricing-and-deployment/deploy-on-sealos)
 
 
 &nbsp;
