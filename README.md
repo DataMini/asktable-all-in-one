@@ -6,6 +6,8 @@
 - [如何单机安装 AskTable](https://docs.asktable.com/docs/pricing-and-deployment/private-deployment-all-in-one)
 
 
+&nbsp;&nbsp
+
 ## 两大产品功能
 ### AI 问答查数
 企业软件的 AI 问数插件
