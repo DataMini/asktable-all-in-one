@@ -36,7 +36,6 @@ AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，�
 访问阿里云市场的 **AskTable 私有部署**。
 
 ![AskTable 部署界面](https://github.com/user-attachments/assets/31623a99-4606-48c4-9a48-def5fcdc43e6)
-<img width="2102" height="1248" alt="image" src="https://github.com/user-attachments/assets/fb70f40c-6fe7-4612-955b-05da248f4171" />
 
 该页面提供官方镜像，确保部署过程稳定高效。
 
