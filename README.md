@@ -1,8 +1,8 @@
 **察言观数（AskTable）是领先的企业级 AI 数据智能体（AI Data Agent） 平台**，为企业提供基于自然语言的数据分析体验，广泛支持 Excel、数据库和数据仓库的智能查询，应用于运营、财务、人事、销售等业务场景，解决企业管理和决策领域的关键问题，为企业打造新一代数据洞察与决策体系。
 
 **AskTable 的目标：让每个人都能轻松、愉快地从数据中获取洞察。**
-- [AskTable 官网](https://asktable.com/)
 
+- [AskTable 官网](https://asktable.com/)
 - [如何单机安装 AskTable](https://docs.asktable.com/docs/pricing-and-deployment/private-deployment-all-in-one)
 
 
@@ -10,20 +10,20 @@
 
 ## 两大产品功能
 ### AI 问答查数
-企业软件的 AI 问数插件
+**企业软件的 AI 问数插件**
 AskTable 能够集成到企业软件(如企业微信、飞书、钉钉、ERP、CRM等)内部，实现用自然语言查询企业核心数据库，并返回精准的结果。
 
-AI 知识库/智能体的结构化伙伴
+**AI 知识库/智能体的结构化伙伴**
 AskTable 能够集成到各类 AI知识库及智能体(如通过Dify、百炼、coze 等搭建)。智能体除了能够查询文本等非结构化数据外，还提供精准智能的查数问数。
 
 ### AI 分析报告
-主动报表分析
+**主动报表分析**
 通过一句话快速生成分析报表，结果包含总值、趋势、占比等数据，可自行设置分析维度。原本3天完成的分析报告只需2分钟，大幅提高企业数据分析效率。
 
-关联性分析
+**关联性分析**
 AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，对数据的成因、变化快速做出关联性分析，完善企业决策依据，提升决策效率。
 
-趋势预测分析
+**趋势预测分析**
 精准预判，决策不“迷路”。察言观数能够通过已有的数据和结果，通过理解用户的自然语言，识别意图，并给出趋势预测和最有利的决策建议。
 
 
@@ -47,7 +47,7 @@ AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，�
 - 2 核 CPU  
 - 4 GB 内存
 
-  <img width="958" height="832" alt="image" src="https://github.com/user-attachments/assets/3f960520-1517-42c7-9679-d2eb5015c4cb" />
+  <img width="479" height="416" alt="image" src="https://github.com/user-attachments/assets/3f960520-1517-42c7-9679-d2eb5015c4cb" />
 
 
 在部署界面填写如下初始化信息：
@@ -63,15 +63,12 @@ AskTable 通过 AI以及业务知识深度理解各表格和字段的关联，�
 
 点击 **“确认订单”** 并 **“立即部署”**。  
 系统将在约 **2 分钟内** 完成自动部署流程。
-<img width="1080" height="936" alt="image" src="https://github.com/user-attachments/assets/ef027e6f-3368-4f82-8e1a-a021dae072b5" />
+<img width="540" height="468" alt="image" src="https://github.com/user-attachments/assets/ef027e6f-3368-4f82-8e1a-a021dae072b5" />
 
-部署完成后，页面将生成登录地址，例如：
-```
-http://123.123.123.123:8000/
-```
+部署完成后，页面将生成登录地址，例如：- (https://asktable.com/)
 
 使用您设置的管理员账号登录，即可访问系统，开始使用 **AskTable**。
-<img width="1080" height="550" alt="image" src="https://github.com/user-attachments/assets/0ae4cf9a-5831-4f13-a5b0-89abd524f5e5" />
+<img width="540" height="275" alt="image" src="https://github.com/user-attachments/assets/0ae4cf9a-5831-4f13-a5b0-89abd524f5e5" />
 
 
 &nbsp;
