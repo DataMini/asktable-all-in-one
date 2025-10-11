@@ -4,12 +4,7 @@
 
 - [AskTable 官网](https://asktable.com/)
 - [如何单机安装 AskTable](https://docs.asktable.com/docs/pricing-and-deployment/private-deployment-all-in-one)
-
-
-&nbsp;
-
-## 产品功能及优势
-- [详情链接](https://docs.asktable.com/docs/introduction/core-features)
+- [产品功能及优势](https://docs.asktable.com/docs/introduction/core-features)
 
 <img width="750" height="421" alt="image" src="https://github.com/user-attachments/assets/0dfb4b21-81b9-4045-8341-c3132867c3af" />
 
