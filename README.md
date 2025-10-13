@@ -75,7 +75,7 @@ docker build -t asktable-all-in-one .
 
 ## 联系我们
 
-公众号搜：AskTable
+公众号搜：察言观数AskTable
 
 官网：https://asktable.com/
 
