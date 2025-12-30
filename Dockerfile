@@ -1,7 +1,7 @@
-FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-auth:latest AS auth
-FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-web:latest AS web
+FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-auth:3.4.84-1230 AS auth
+FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-web:3.2.149-1230 AS web
 # at server 作为基础镜像
-FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-server-bin:latest
+FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-server-bin:3.3.197-1209
 
 # 安装 supervisord、nginx
 RUN apt-get update && apt-get install -y supervisor nginx telnet gettext-base default-mysql-client curl
