@@ -4,13 +4,14 @@
 # for at-auth
 # export AUTH_MAX_USERS=1
 
-# for at-server
 # 从 BASE_URL 中提取 path 部分，再加上 /api 后缀
 base_url_path=$(echo "$BASE_URL" | sed -E 's|^https?://[^/]*||')
+
+# for at-server
 export AT_HTTP_ROOT_PATH="${base_url_path}/api"  # 合并到一个 Nginx Port，URL增加前缀
 export LANGFUSE_ENV_TAG=all-in-one
 # for at-web
-export AT_API_BASE_URL_EXTERNAL=${BASE_URL}/api
+export AT_API_BASE_URL_EXTERNAL="${BASE_URL}/api"
 
 
 # for all-in-one init sample data
