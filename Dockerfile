@@ -1,4 +1,4 @@
-FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-web:latest AS web
+FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-web:4.0.14-1230 AS web
 # at server 作为基础镜像
 FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-server:latest
 
