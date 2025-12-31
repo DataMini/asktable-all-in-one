@@ -1,3 +1,5 @@
 .idea
 mysql_data
 asktable_data
+postgres_data
+qdrant_storage

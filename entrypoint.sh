@@ -9,6 +9,7 @@ base_url_path=$(echo "$BASE_URL" | sed -E 's|^https?://[^/]*||')
 
 # for at-server
 export AT_HTTP_ROOT_PATH="${base_url_path}/api"  # 合并到一个 Nginx Port，URL增加前缀
+export AT_HTTP_HOST_EXTERNAL="${BASE_URL}/api"
 export LANGFUSE_ENV_TAG=all-in-one
 # for at-web
 export AT_API_BASE_URL_EXTERNAL="${BASE_URL}/api"
