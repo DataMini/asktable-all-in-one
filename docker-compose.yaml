@@ -1,37 +1,52 @@
 services:
   asktable:
     # AskTable
-    image: registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one:latest  # 中国大陆地区
+    image: registry.cn-shanghai.aliyuncs.com/datamini/asktable-all-in-one:2.0.0-1231  # 中国大陆地区
     # image: datamini/asktable-all-in-one:latest   # 其他地区
     container_name: asktable
     depends_on:
-      - asktable_mysql
+      - asktable-pg
     ports:
-      - 8000:80
+      - "8000:80"
+    privileged: true
     environment:
       TZ: Asia/Shanghai
-      BASE_URL: http://127.0.0.1:8000          # 容器对外暴露的地址（即从外部比如浏览器访问的地址）
-      LLM_API_KEY: <YOUR_API_KEY_HERE>      #LLM API KEY，用于访问大模型。
-      MYSQL_HOST: asktable_mysql               # MySQL 数据库地址
-      MYSQL_USER: asktable                     # MySQL 数据库用户名
-      MYSQL_PASSWORD: asktable                 # MySQL 数据库密码
-      MYSQL_DB: asktable                       # MySQL 数据库名称
-      INIT_SAMPLE_DATA: 1
-      MYSQL_ROOT_PASSWORD: asktable
+      BASE_URL: http://127.0.0.1:8000        # 【务必修改】容器对外暴露的地址（即从外部比如浏览器访问的地址）
+      LLM_API_KEY: asktable-xxxxxx=xxxxxxxx      # 【务必修改】AI 模型令牌，是以“asktable-”开头的字符串。登录 AskTable(https://cloud.asktable.com) 后，顶部点击“私有部署 AskTable“获取。
+      DATABASE_HOST: asktable-pg
+      DATABASE_PORT: 5432
+      DATABASE_USER: asktable
+      DATABASE_PASSWORD: asktable
+      DATABASE_DB: asktable
+      VDB_ADDRESS: http://asktable_vdb:6333    # 向量数据库地址
+      VDB_API_KEY: asktable                    #【建议修改】向量数据库 API KEY
     volumes:
       - ./asktable_data:/asktable
-      
-  asktable_mysql:
-    image: registry.cn-shanghai.aliyuncs.com/dminfra/mysql:8.0.27   # 中国大陆地区
-    # image: mysql:8.0     # 其他地区
-    container_name: asktable_mysql
-    ports:
-      - "3306:3306"
+
+  asktable-pg:
+    image: postgres:17
+    container_name: asktable-pg
+    restart: unless-stopped
     environment:
-      TZ: Asia/Shanghai
-      MYSQL_ROOT_PASSWORD: asktable
-      MYSQL_DATABASE: asktable
-      MYSQL_USER: asktable
-      MYSQL_PASSWORD: asktable
+      POSTGRES_USER: asktable
+      POSTGRES_PASSWORD: asktable
+      POSTGRES_DB: asktable
+    ports:
+      - "5432:5432"
     volumes:
-      - ./mysql_data:/var/lib/mysql
+      - ./postgres_data:/var/lib/postgresql/data
+
+  asktable_vdb:
+    image: registry.cn-shanghai.aliyuncs.com/dminfra/qdrant:v1.11.5
+    container_name: asktable_vdb
+    ports:
+      - "6333"
+      - "6334"
+    environment:
+      RUN_MODE: production
+      TZ: Asia/Shanghai
+      QDRANT__SERVICE__API_KEY: asktable  # 【建议修改】
+    volumes:
+      - ./qdrant_storage:/qdrant/storage
+      - ./qdrant_snapshots:/qdrant/snapshots
+      
