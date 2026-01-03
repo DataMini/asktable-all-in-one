@@ -1,6 +1,6 @@
-FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-web:4.0.16-0104 AS web
+FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-web:latest AS web
 # at server 作为基础镜像
-FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-server:4.0.41-0104
+FROM registry.cn-shanghai.aliyuncs.com/datamini/asktable-server:latest
 
 # 安装 supervisord、nginx
 RUN apt-get update && apt-get install -y supervisor nginx telnet gettext-base postgresql-client curl
