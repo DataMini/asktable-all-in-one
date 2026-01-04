@@ -21,7 +21,7 @@
 ### 主要访问地址
 
 - **UI 界面**: `http://your-domain/` - AskTable 的主要管理界面
-- **API 服务**: `http://your-domain/api/` - API 接口
+- **API 服务**: `http://your-domain/api/v1/redoc` - API 接口
 - **MCP 服务**: `http://your-domain/mcp/` - Model Context Protocol Server-Sent Events 服务
 
 
